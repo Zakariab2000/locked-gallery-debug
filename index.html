@@ -22914,6 +22914,18 @@ window.addEventListener("load",function(){
           __dbg("DBG: AFTER CARD-1 CLICK: views home="+v("view-home")+" caseselect="+v("view-caseselect")+" setup="+v("view-setup")+" case="+v("view-case")+" case2="+v("view-case2")+" caseG="+v("view-caseG"));
           __dbg("DBG: setup-tag="+((document.getElementById("setup-case-tag")||{}).textContent||"MISSING"));
           __dbg("DBG: body text len="+document.body.textContent.length+" buttons="+document.querySelectorAll("button").length);
+          function __cs(id){var e=document.getElementById(id);if(!e)return id+": MISSING";var c=getComputedStyle(e);var r=e.getBoundingClientRect();return id+": display="+c.display+" vis="+c.visibility+" op="+c.opacity+" hiddenCls="+e.classList.contains("hidden")+" rect="+Math.round(r.left)+","+Math.round(r.top)+" "+Math.round(r.width)+"x"+Math.round(r.height);}
+          __dbg("DBG: "+__cs("view-setup"));
+          __dbg("DBG: "+__cs("scene"));
+          __dbg("DBG: "+__cs("aaa-loader"));
+          __dbg("DBG: "+__cs("view-caseselect"));
+          var tag=document.getElementById("setup-case-tag"); if(tag){var c=getComputedStyle(tag);__dbg("DBG: setup-tag: op="+c.opacity+" vis="+c.visibility+" color="+c.color+" rect="+JSON.stringify(tag.getBoundingClientRect()));}
+          var rb=document.querySelector(".role"); if(rb){var c=getComputedStyle(rb);__dbg("DBG: first .role: op="+c.opacity+" vis="+c.visibility+" display="+c.display);}
+          var el=document.elementFromPoint(Math.floor(innerWidth/2),Math.floor(innerHeight/2));
+          __dbg("DBG: elementFromPoint(center)="+(el?(el.tagName+"#"+(el.id||"")+"."+(el.className&&el.className.baseVal!==undefined?"":el.className)):"null"));
+          var el2=document.elementFromPoint(100,300);
+          __dbg("DBG: elementFromPoint(100,300)="+(el2?(el2.tagName+"#"+(el2.id||"")):"null"));
+          __dbg("DBG: reducedMotion="+matchMedia("(prefers-reduced-motion: reduce)").matches+" innerW="+innerWidth+" innerH="+innerHeight+" scrollY="+scrollY);
           __dbg("DBG: ERRORS ("+window.__errs.length+"):");
           window.__errs.forEach(function(e){__dbg("DBG-ERR: "+e);});
           document.title="DBG-DONE errors="+window.__errs.length;
